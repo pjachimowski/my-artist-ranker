@@ -7,7 +7,7 @@ export default class AddPlayerForm extends Component {
 
   onNameChange = (e) => {
     const name = e.target.value;
-    this.setState({ name: name });
+    this.setState({ name });
   };
 
   addPlayer = (e) => {
@@ -15,8 +15,6 @@ export default class AddPlayerForm extends Component {
     this.props.addPlayer(this.state.name);
     this.setState({ name: '' });
   };
-
-  
 
   render() {
     return (
@@ -38,4 +36,3 @@ export default class AddPlayerForm extends Component {
 // AddPlayerForm.propTypes = {
 //   addPlayer: PropTypes.func.isRequired,
 // };
-// added here ... source code is different 

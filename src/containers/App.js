@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as PlayerActionCreators from '../actions/player';
-import Player from '../components/Player';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Artist from '../components/Artist';
 import Header from '../components/Header';
 import AddPlayerForm from '../components/AddPlayerForm';
+import { AddArtist } from '../components/AddArtist';
 import PlayerDetail from '../components/PlayerDetails';
 
-class Scoreboard extends Component {
+class App extends Component {
   // static propTypes = {
   //   players: PropTypes.array.isRequired,
   // };
 
   render() {
-    const { dispatch, players, selectedPlayerIndex } = this.props;
+    const { dispatch, artists, selectedPlayerIndex } = this.props;
     const addPlayer = bindActionCreators(
       PlayerActionCreators.addPlayer,
       dispatch
@@ -33,26 +35,32 @@ class Scoreboard extends Component {
 
     let selectedPlayer;
     if (selectedPlayerIndex !== -1) {
-      selectedPlayer = players[selectedPlayerIndex];
+      selectedPlayer = artists[selectedPlayerIndex];
     }
 
-    const playerComponents = players.map((player, index) => (
-      <Player
-        index={index}
-        name={player.name}
-        score={player.score}
-        key={player.name}
-        updatePlayerScore={updatePlayerScore}
-        removePlayer={removePlayer}
-        selectPlayer={selectPlayer}
-      />
-    ));
     return (
-      <div className="scoreboard">
-        <Header players={players} />
-        <div className="players">{playerComponents}</div>
+      <div className="app">
+        <Router>
+          <Header artists={artists} />
+          <Route path="/add" component={AddArtist} />
+        </Router>
+
+        <div>
+          {artists.map((artist, index) => (
+            <Artist
+              index={index}
+              name={artist.name}
+              rating={artist.rating}
+              key={artist.id}
+              picture={artist.picture}
+              updatePlayerScore={updatePlayerScore}
+              removePlayer={removePlayer}
+              selectPlayer={selectPlayer}
+            />
+          ))}
+        </div>
         <AddPlayerForm addPlayer={addPlayer} />
-        <div className="player-detail">
+        <div className="artist-detail">
           <PlayerDetail selectedPlayer={selectedPlayer} />
         </div>
       </div>
@@ -61,8 +69,8 @@ class Scoreboard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  players: state.players,
+  artists: state.artists,
   selectedPlayerIndex: state.selectedPlayerIndex,
 });
 
-export default connect(mapStateToProps)(Scoreboard);
+export default connect(mapStateToProps)(App);

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 export default class AddPlayerForm extends Component {
   state = {
     name: '',
+    picture: '',
   };
 
   onNameChange = (e) => {
@@ -18,13 +19,13 @@ export default class AddPlayerForm extends Component {
 
   render() {
     return (
-      <div className="add-player-form">
+      <div className="add-artist-form">
         <form onSubmit={this.addPlayer}>
           <input
             type="text"
             value={this.state.name}
             onChange={this.onNameChange}
-            placeholder="Player Name"
+            placeholder="add new artist"
           />
           <input type="submit" value="Add Player" />
         </form>

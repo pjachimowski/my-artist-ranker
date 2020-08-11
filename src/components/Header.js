@@ -1,13 +1,13 @@
 import React, { } from 'react';
-import Stats from './Stats';
-import Stopwatch from './Stopwatch';
+import YouRanked from './YouRanked';
+import NavbarLinks from './NavbarLinks';
 
 const Header = props => {
   return (
     <div className="header">
-      <Stats players={props.players} />
-      <h1>Scoreboard</h1>
-      <Stopwatch />
+      <NavbarLinks />
+      <h1>Welcome to</h1> <h2>my Artists Ranking App</h2>
+      <YouRanked artists={props.artists} />
     </div>
   );
 }

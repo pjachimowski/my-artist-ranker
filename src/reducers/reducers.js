@@ -1,30 +1,37 @@
 import * as PlayerActionTypes from '../actiontypes/players';
+import { v4 as uuid } from 'uuid';
 
 const initialState = {
-  players: [
+  artists: [
     {
-      name: 'Jim Hoskins',
-      score: 31,
+      id: uuid(),
+      name: 'Giolì & Assia',
+      rating: 5,
       created: '11/8/2016',
       updated: '11/9/2016',
+      picture: 'https://i.ibb.co/xLvHHCZ/TEy-FOecd-400x400.jpg',
     },
     {
-      name: 'Andrew Chalkley',
-      score: 20,
+      id: uuid(),
+      name: 'Mumford & Sons',
+      rating: 4,
       created: '11/8/2016',
       updated: '11/9/2016',
+      picture: 'https://i.ibb.co/sJyfzd8/Mumford-Sons-Delta.png',
     },
     {
-      name: 'Alena Holligan',
-      score: 50,
+      id: uuid(),
+      name: 'Shallou',
+      rating: 3,
       created: '11/8/2016',
       updated: '11/9/2016',
+      picture: 'https://i.ibb.co/GM6cRT2/7f0f3e0101b6f051fbbc005fd68acd48389e9d9a.jpg',
     },
   ],
   selectedPlayerIndex: -1,
 };
 
-export default function Player(state = initialState, action) {
+export default function Reducers(state = initialState, action) {
   let date = new Date();
   let day = date.getDate();
   let month = date.getMonth() + 1;
@@ -35,16 +42,16 @@ export default function Player(state = initialState, action) {
       //{...} take existing items and incl. them in new object without mutating it
       // create object with name taken from the action and score 0
       const addPlayerList = [
-        ...state.players,
+        ...state.artists,
         {
           name: action.name,
-          score: 0,
+          rating: 0,
           created: `${month}/${day}/${year}`,
         },
       ];
       return {
         ...state,
-        players: addPlayerList,
+        artists: addPlayerList,
       };
     }
 
@@ -54,12 +61,12 @@ export default function Player(state = initialState, action) {
       //extract objects from arr, take all the object exept of the one we want to remove,
       // combain the results to a new arr
       const removePlayerList = [
-        ...state.players.slice(0, action.index),
-        ...state.players.slice(action.index + 1),
+        ...state.artists.slice(0, action.index),
+        ...state.artists.slice(action.index + 1),
       ];
       return {
         ...state,
-        players: removePlayerList,
+        artists: removePlayerList,
       };
     }
 
@@ -67,19 +74,19 @@ export default function Player(state = initialState, action) {
       // use index to map/produce new array where,
       // the only thing we change is the score of the player
       // whos index we have
-      const updatePlayerList = state.players.map((player, index) => {
+      const updatePlayerList = state.artists.map((artist, index) => {
         if (index === action.index) {
           return {
-            ...player,
-            score: player.score + action.score,
+            ...artist,
+            rating: artist.rating + action.rating,
             updated: `${month}/${day}/${year}`,
           };
         }
-        return player;
+        return artist;
       });
       return {
         ...state,
-        players: updatePlayerList,
+        artists: updatePlayerList,
       };
     }
 

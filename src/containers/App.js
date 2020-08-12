@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import {render} from 'react-dom';
 import * as PlayerActionCreators from '../actions/player';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Artist from '../components/Artist';
+import  Home from '../components/Home';
+import  AddArtist  from '../components/AddArtist';
+import { EditArtist } from '../components/EditArtist';
 import Header from '../components/Header';
-import AddPlayerForm from '../components/AddPlayerForm';
-import { AddArtist } from '../components/AddArtist';
-import PlayerDetail from '../components/PlayerDetails';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
-  // static propTypes = {
-  //   players: PropTypes.array.isRequired,
-  // };
-
   render() {
     const { dispatch, artists, selectedPlayerIndex } = this.props;
     const addPlayer = bindActionCreators(
@@ -32,7 +29,6 @@ class App extends Component {
       PlayerActionCreators.selectPlayer,
       dispatch
     );
-
     let selectedPlayer;
     if (selectedPlayerIndex !== -1) {
       selectedPlayer = artists[selectedPlayerIndex];
@@ -42,32 +38,19 @@ class App extends Component {
       <div className="app">
         <Router>
           <Header artists={artists} />
+          <Route exact path="/" render={() => (<Home 
+          addPlayer={addPlayer} 
+          removePlayer={removePlayer}  
+          updatePlayerScore={updatePlayerScore} 
+          selectPlayer={selectPlayer} 
+          artists={artists} />)} />
           <Route path="/add" component={AddArtist} />
+          <Route path="/edit/:id" component={EditArtist} />
         </Router>
-
-        <div>
-          {artists.map((artist, index) => (
-            <Artist
-              index={index}
-              name={artist.name}
-              rating={artist.rating}
-              key={artist.id}
-              picture={artist.picture}
-              updatePlayerScore={updatePlayerScore}
-              removePlayer={removePlayer}
-              selectPlayer={selectPlayer}
-            />
-          ))}
-        </div>
-        <AddPlayerForm addPlayer={addPlayer} />
-        <div className="artist-detail">
-          <PlayerDetail selectedPlayer={selectedPlayer} />
-        </div>
       </div>
     );
   }
 }
-
 const mapStateToProps = (state) => ({
   artists: state.artists,
   selectedPlayerIndex: state.selectedPlayerIndex,

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export default class AddPlayerForm extends Component {
   state = {
     name: '',
-    picture: '',
   };
 
   onNameChange = (e) => {

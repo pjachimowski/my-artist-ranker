@@ -47,6 +47,7 @@ export default function Reducers(state = initialState, action) {
           name: action.name,
           rating: 0,
           created: `${month}/${day}/${year}`,
+          picture: action.picture,
         },
       ];
       return {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Artist from './Artist';
 import AddPlayerForm from './AddPlayerForm';
 import PlayerDetail from './PlayerDetails';
+import { Link } from 'react-router-dom';
 
 const Home = (props) => {
   // static propTypes = {
@@ -27,33 +28,39 @@ const Home = (props) => {
   //     dispatch
   //   );
 
-    // let selectedPlayer;
-    // if (selectedPlayerIndex !== -1) {
-    //   selectedPlayer = artists[selectedPlayerIndex];
-    // }
-    return (
-      <div>
-        <div>
-          {props.artists.map((artist, index) => (
-            <Artist
-              index={index}
-              name={artist.name}
-              rating={artist.rating}
-              key={artist.id}
-              picture={artist.picture}
-              updatePlayerScore={props.updatePlayerScore}
-              removePlayer={props.removePlayer}
-              selectPlayer={props.selectPlayer}
-            />
-          ))}
-        </div>
-        <AddPlayerForm addPlayer={props.addPlayer} />
-        <div className="artist-detail">
-          <PlayerDetail selectedPlayer={props.selectedPlayer} />
-        </div>
+  // let selectedPlayer;
+  // if (selectedPlayerIndex !== -1) {
+  //   selectedPlayer = artists[selectedPlayerIndex];
+  // }
+  return (
+    <div>
+      <div className="add-nav">
+        <Link className="add-artist" to="/add">
+          {' '}
+          <i className="fas fa-user-plus"></i>
+        </Link>
       </div>
-    );
-  }
+      <div>
+        {props.artists.map((artist, index) => (
+          <Artist
+            index={index}
+            name={artist.name}
+            rating={artist.rating}
+            key={artist.id}
+            picture={artist.picture}
+            updatePlayerScore={props.updatePlayerScore}
+            removePlayer={props.removePlayer}
+            selectPlayer={props.selectPlayer}
+          />
+        ))}
+      </div>
+      <AddPlayerForm addPlayer={props.addPlayer} />
+      <div className="artist-detail">
+        <PlayerDetail selectedPlayer={props.selectedPlayer} />
+      </div>
+    </div>
+  );
+};
 // }
 
 export default Home;

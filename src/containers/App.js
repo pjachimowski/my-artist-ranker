@@ -10,6 +10,7 @@ import { EditArtist } from '../components/EditArtist';
 import Header from '../components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 class App extends Component {
   render() {
     const { dispatch, artists, selectedPlayerIndex } = this.props;
@@ -38,13 +39,19 @@ class App extends Component {
       <div className="app">
         <Router>
           <Header artists={artists} />
+
           <Route exact path="/" render={() => (<Home 
           addPlayer={addPlayer} 
           removePlayer={removePlayer}  
           updatePlayerScore={updatePlayerScore} 
           selectPlayer={selectPlayer} 
           artists={artists} />)} />
-          <Route path="/add" component={AddArtist} />
+          <Route path="/add" render={() => (<AddArtist 
+          addPlayer={addPlayer} 
+          removePlayer={removePlayer}  
+          updatePlayerScore={updatePlayerScore} 
+          selectPlayer={selectPlayer} 
+          artists={artists} />)} />
           <Route path="/edit/:id" component={EditArtist} />
         </Router>
       </div>

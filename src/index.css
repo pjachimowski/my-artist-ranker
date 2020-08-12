@@ -12,6 +12,13 @@ body {
   border-radius: 5px;
 }
 
+.add-nav {
+  display: flex;
+  justify-content: center;
+  padding: 15px 5px;
+  border-bottom: solid 5px #c47ea3;
+}
+
 ul {
   list-style: none;
 }
@@ -37,7 +44,7 @@ h3 {
 .header {
   padding: 5px 10px;
   text-align: center;
-  border-bottom: solid 5px #c47ea3;
+  
 }
 
 h1 {
@@ -61,10 +68,10 @@ h2 {
 
 .add-artist {
   color: #d38eb3;
-  padding: 5px 10px;
+  padding: 20px;
   margin: 5px;
   font-size: 20px;
-  border-radius: 5px;
+  border-radius: 50%;
   border: solid 2px 
 }
 
@@ -117,6 +124,14 @@ h2 {
   background: blue;
 }
 
+.btn-back {
+  display: flex;
+  align-self: right;
+}
+
+
+
+
 .counter {
   display: flex;
 }
@@ -164,13 +179,10 @@ h2 {
 
 .add-artist-form form {
   display: flex;
-  background-color: #222;
 }
 
-.add-artist-form input[type='text'] {
+.input {
   flex-grow: 1;
-  border-width: 0 0 1px 0;
-  margin: 15px 10px 15px 15px;
   padding: 10px;
   border-radius: 5px;
   background-color: #333;
@@ -180,11 +192,6 @@ h2 {
   color: #999;
   letter-spacing: 2px;
   outline: none;
-}
-
-.add-artist-form input[type='text']::-webkit-input-placeholder {
-  color: #666;
-  letter-spacing: 2px;
 }
 
 .add-artist-form input[type='text']:focus {

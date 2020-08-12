@@ -6,7 +6,7 @@ body {
 }
 
 .Navbar {
-  background: linear-gradient(110deg, #c47ea3 70%, #d38eb3 60%);
+  background: linear-gradient(110deg, #bb779b 70%, #db96bb 60%);
   margin: 20px;
   color: lightgray;
   border-radius: 5px;
@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 15px 5px;
-  border-bottom: solid 5px #c47ea3;
+  border-bottom: solid 5px #bb779b;
 }
 
 ul {
@@ -56,7 +56,7 @@ h2 {
 }
 
 .you-ranked {
-  color: #d38eb3;
+  color: #db96bb;
   margin: none;
   display: flex;
   justify-content: space-between;
@@ -67,9 +67,10 @@ h2 {
 }
 
 .add-artist {
-  color: #d38eb3;
+  color: #db96bb;
+  background: none;
   padding: 20px;
-  margin: 5px;
+  margin: 10px 0 15px 0;
   font-size: 20px;
   border-radius: 50%;
   border: solid 2px 
@@ -77,7 +78,7 @@ h2 {
 
 .add-artist:hover {
   text-decoration: none;
-  color: #c2789f;
+  color: #a15681;
 }
 
 .artist {
@@ -88,7 +89,7 @@ h2 {
 }
 
 .remove-artist {
-  margin: 15px;
+  margin: 15px 25px;
   cursor: pointer;
 }
 
@@ -102,13 +103,15 @@ h2 {
 } 
 
 .artist-name {
+  color: #db96bb;
   font-size: 35px;
   font-weight: 600;
 }
 
 .artist-name:hover {
-  color: #d38eb3;
   cursor: pointer;
+  color: #a15681;
+  text-decoration: none;
 }
 
 .artist-img {
@@ -120,17 +123,8 @@ h2 {
 }
 
 .artist-score {
-  width: 190px;
-  background: blue;
+  width: 150px;
 }
-
-.btn-back {
-  display: flex;
-  align-self: right;
-}
-
-
-
 
 .counter {
   display: flex;
@@ -149,74 +143,76 @@ h2 {
   user-select: none;
 }
 
+.counter-action:focus {
+  outline:0;
+}
+
 .counter-action.increment {
-  background: #66bb6a;
+  border-radius: 25px 0 25px 0;
+  border: solid 2px  #66bb6a;
+  background: none;
 }
 
 .counter-action.increment:hover {
-  background: #549d59;
+  border: solid 2px  #38773c;
+  background: none;
   cursor: pointer;
 }
 
 .counter-action.decrement {
-  background: #ef5350;
+  border-radius: 25px 0 25px 0;
+  border: solid 2px  #ef5350;
+  background: none;
 }
 
 .counter-action.decrement:hover {
-  background: #c44442;
+  border: solid 2px  #882322;
+  background: none;
   cursor: pointer;
 }
 
 .counter-score {
   flex-grow: 1;
-  background: #2b2b2b;
-  color: #fafafa;
+  color: lightgray;
   text-align: center;
-  font-family: monospace;
   padding: 10px;
   font-size: 2em;
 }
 
-.add-artist-form form {
+.add-artist-form {
+  padding: 15px;
+  display: grid;
+  justify-items: stretch;
+  align-content: center;
+}
+
+.center-btn{
+  margin: 15px;
+  text-align: center;
+}
+
+.label {
+  margin: 15px 0 0 0;
+}
+
+.btn-back {
+  color: #db96bb;
   display: flex;
+  align-self: right;
+}
+
+.btn-back:hover {
+  text-decoration: none;
+  color: #a15681;
 }
 
 .input {
-  flex-grow: 1;
   padding: 10px;
   border-radius: 5px;
-  background-color: #333;
+  background-color: #fafafa;;
   border-style: none;
-  text-shadow: none;
-  text-transform: uppercase;
   color: #999;
-  letter-spacing: 2px;
   outline: none;
-}
-
-.add-artist-form input[type='text']:focus {
-  background-color: #444;
-}
-
-.add-artist-form input[type='submit'] {
-  display: block;
-  font-size: 0.6em;
-  margin: 15px 15px 15px 0;
-  padding: 10px;
-  background-color: #333;
-  border-radius: 5px;
-  border: none;
-  color: #999;
-  letter-spacing: 2px;
-  font-weight: bold;
-  text-shadow: none;
-  text-transform: uppercase;
-}
-
-.add-artist-form input[type='submit']:hover {
-  background: #4b71b5;
-  color: #fafafa;
-  cursor: pointer;
 }
 
 .artist-detail {
@@ -238,4 +234,10 @@ h2 {
   display: inline-block;
   padding-right: 0.6em;
   width: 3.8em;
+}
+
+.footer {
+  margin-right: 25px;
+  text-align: right;
+  font-size: 12px;
 }

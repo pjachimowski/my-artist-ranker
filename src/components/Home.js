@@ -1,10 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Artist from './Artist';
-import AddPlayerForm from './AddPlayerForm';
 import PlayerDetail from './PlayerDetails';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const Home = (props) => {
+const Home = () => {
+  // const dispatch = useDispatch();
+  const artists = useSelector(state => state.artists)
+
+  // const addPlayer = useSelector((state) => state.addPlayer);
+  // const selectedPlayer = useSelector((state) => state.selectedPlayer);
+
   // static propTypes = {
   //   players: PropTypes.array.isRequired,
   // };
@@ -41,22 +47,10 @@ const Home = (props) => {
         </Link>
       </div>
       <div>
-        {props.artists.map((artist, index) => (
-          <Artist
-            index={index}
-            name={artist.name}
-            rating={artist.rating}
-            key={artist.id}
-            picture={artist.picture}
-            updatePlayerScore={props.updatePlayerScore}
-            removePlayer={props.removePlayer}
-            selectPlayer={props.selectPlayer}
-          />
-        ))}
+      {artists.sort((a, b) => b.rating - a.rating).map((artist, index) => (<Artist rating={artist.rating} key={artist.id} index={index} artist={artist}/>))}
       </div>
-      <AddPlayerForm addPlayer={props.addPlayer} />
       <div className="artist-detail">
-        <PlayerDetail selectedPlayer={props.selectedPlayer} />
+        <PlayerDetail />
       </div>
     </div>
   );

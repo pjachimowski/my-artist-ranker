@@ -1,29 +1,35 @@
 import React from 'react';
 
 const PlayerDetail = ({ selectedPlayer }) => {
-  if(selectedPlayer){
+  if (selectedPlayer) {
     return (
       <div>
         <h3>{selectedPlayer.name}</h3>
         <ul>
           <li>
-            <span>Score: </span> 
+            <span>Score: </span>
             {selectedPlayer.score}
           </li>
           <li>
-            <span>Created: </span> 
+            <span>Created: </span>
             {selectedPlayer.created}
           </li>
           <li>
-            <span>Updated: </span> 
+            <span>Updated: </span>
             {selectedPlayer.updated}
-          </li>        
+          </li>
         </ul>
       </div>
     );
-  }
-  else {
-    return (<p>Click on a player to see more details</p>);
+  } else {
+    return (
+      <div className="footer">
+        <p>
+          Take a deep breath, listen to your favorite song and realize
+          everything is gonna be okay, nothing is permanent.{' '}
+        </p>
+      </div>
+    );
   }
 };
 

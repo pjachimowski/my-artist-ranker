@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 
-const YouRanked = (props) => {
-  const noOfArtists = props.artists.length;
+const YouRanked = () => {
+  const artists = useSelector(state => state.artists)
+  const noOfArtists = artists.length;
 
   return (
     <div className="you-ranked">

@@ -1,18 +1,22 @@
 import React, {  } from 'react';
+import { useDispatch } from 'react-redux';
+import { updatePlayerScore } from '../actions/player';
 
 const Counter = (props) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="counter">
       <button
         className="counter-action decrement"
-        onClick={() => props.updatePlayerScore(props.index, -1)}
+        onClick={() => dispatch(updatePlayerScore(props.index, -1))}
       >
         - 
       </button>
       <div className="counter-score"> {props.rating} </div>
       <button
         className="counter-action increment"
-        onClick={() => props.updatePlayerScore(props.index, 1)}
+        onClick={() => dispatch(updatePlayerScore(props.index, 1))}
       >
         + 
       </button>

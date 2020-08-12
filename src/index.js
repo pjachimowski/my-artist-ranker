@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import  ReactDOM  from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Reducers from './reducers/reducers';
@@ -12,9 +12,11 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-render(
+ReactDOM.render(
+  <React.StrictMode>
   <Provider store={store}>
     <App />
-  </Provider>,
+  </Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 );

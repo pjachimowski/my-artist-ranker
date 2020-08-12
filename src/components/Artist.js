@@ -1,33 +1,46 @@
 import React from 'react';
 import Counter from './Counter';
+import Rating from './Rating';
+import { useDispatch } from 'react-redux';
+import { removePlayer, selectPlayer } from '../actions/player';
+import { Link } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 
-const Artist = (props) => (
-  <div className="artist">
-    <img className="artist-img" src={props.picture} alt="Artist picture"></img>
-    <div className="artist-section">
-      <div
-        className="artist-name"
-        onClick={() => props.selectPlayer(props.index)}
-      >
-        {props.name}
+const Artist = (props) => {
+  const dispatch = useDispatch();
+  return (
+    <div className="artist">
+      <img
+        className="artist-img"
+        src={props.artist.picture}
+        alt="Artist Album"
+      ></img>
+      <div className="artist-section">
+        <Link className="artist-name" to={`/edit/${props.artist.id}`}>
+          {' '}
+        <div
+          
+          onClick={() => dispatch(selectPlayer(props.index))}
+        >
+          {props.artist.name}
+        </div>
+        </Link>
+        <section>
+          your rating: <Rating rating={props.artist.rating} />{' '}
+        </section>
       </div>
-      <section>your rating: {props.rating}</section>
+      <div className="artist-score">
+        <Counter index={props.index} rating={props.artist.rating} />
+      </div>
+      <div
+        className="remove-artist"
+        onClick={() => dispatch(removePlayer(props.index))}
+      >
+        <i className="fas fa-user-minus"></i>
+      </div>
     </div>
-    <div className="artist-score">
-      <Counter
-        index={props.index}
-        updatePlayerScore={props.updatePlayerScore}
-        rating={props.rating}
-      />
-    </div>
-    <div
-      className="remove-artist"
-      onClick={() => props.removePlayer(props.index)}
-    >
-      <i class="fas fa-user-minus"></i>
-    </div>
-  </div>
-);
+  );
+};
 
 // Player.propTypes = {
 //   name: PropTypes.string.isRequired,

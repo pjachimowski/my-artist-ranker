@@ -1,53 +1,84 @@
-import React, { Component } from 'react';
+import React, { useState }  from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-// import { v4 as uuid } from 'uuid';
+import { useDispatch } from 'react-redux';
+import { addArtist } from '../actions/player';
 // import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-export default class AddArtist extends Component {
-  state = {
-    name: '',
-    picture: '',
-  };
+const AddArtist = () => {
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [picture, setImg] = useState(''); //<<<
+  
+    const history = useHistory();
+  
+    const submitArtist = () => {
+      dispatch(addArtist(name, picture));
+      history.push('/');
+    };
 
-  onNameChange = (e) => {
-    const name = e.target.value;
-    this.setState({ name });
-  };
+    const onNameChange = (e) => {
+      setName(e.target.value);
+    };
+  
+    const onPictureChange = (e) => {
+      setImg(e.target.value) //<<<
+    };
 
-  onPictureChange = (e) => {
-    const picture = e.target.value;
-    this.setState({ picture });
-  };
 
-  addPlayer = (e) => {
-    if (e) e.preventDefault();
-    this.props.addPlayer(this.state.name, this.state.picture);
-    this.setState({ 
-      name: '',
-      picture: '',
-     });
-  };
+  // state = {
+  //   name: '',
+  //   picture: '',
+  // };
+  
 
-  render() {
+  // onNameChange = (e) => {
+  //   const name = e.target.value;
+  //   this.setState({ name });
+  // };
+
+  // onPictureChange = (e) => {
+  //   const picture = e.target.value;
+  //   this.setState({ picture });
+  // };
+
+  // addPlayer = (e) => {
+  //   if (e) e.preventDefault();
+  //   this.props.addPlayer(this.state.name, this.state.picture);
+  //   this.setState({
+  //     name: '',
+  //     picture: '',
+  //   });
+  // };
+
+
+    
     return (
       <div className="add-artist-form">
-        <Form onSubmit={this.addPlayer}>
+        <Form onSubmit={submitArtist}>
           <Form.Group>
-            <Form.Label>Name</Form.Label>
+            <Form.Label className="label">Name</Form.Label>
             {/* <form onSubmit={this.addPlayer}> */}
-            <Form.Control className="input" 
+            <Form.Control
+              className="input"
               type="text"
-              value={this.state.name}
-              onChange={this.onNameChange}
-              placeholder="add new artist"
+              // value={this.state.name}
+              onChange={onNameChange}
+              placeholder="add new artist name"
             />
-            <Form.Label>Picture url</Form.Label>
-            <Form.Control className="input"  type="text"
-              value={this.state.picture}
-              onChange={this.onPictureChange}
-              placeholder="url for picture" />
-            <Form.Control type="submit" value="Add Player" />
+            <Form.Label className="label">Picture</Form.Label>
+            <Form.Control
+              className="input"
+              type="text"
+              // value={this.state.picture}
+              onChange={onPictureChange}
+              placeholder="add url for the artist picture"
+            />
+            <div className="center-btn">
+              <button className="add-artist" type="submit" value="Add Player">
+                <i className="fas fa-user-plus"></i>
+              </button>
+            </div>
           </Form.Group>
         </Form>
         <Link to="/" className="btn-back">
@@ -56,7 +87,7 @@ export default class AddArtist extends Component {
       </div>
     );
   }
-}
+
 
 // AddPlayerForm.propTypes = {
 //   addPlayer: PropTypes.func.isRequired,
@@ -110,3 +141,5 @@ export default class AddArtist extends Component {
 //     </Form>
 //   );
 // };
+
+export default AddArtist;

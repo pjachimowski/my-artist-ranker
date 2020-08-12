@@ -44,8 +44,10 @@ export default function Reducers(state = initialState, action) {
       const addPlayerList = [
         ...state.artists,
         {
+          id: uuid(),
           name: action.name,
           rating: 0,
+          updated: 'no updates yet',
           created: `${month}/${day}/${year}`,
           picture: action.picture,
         },
@@ -91,11 +93,11 @@ export default function Reducers(state = initialState, action) {
       };
     }
 
-    case PlayerActionTypes.SELECT_PLAYER:
-      return {
-        ...state,
-        selectedPlayerIndex: action.index,
-      };
+    // case PlayerActionTypes.SELECT_PLAYER:
+    //   return {
+    //     ...state,
+    //     selectedPlayerIndex: action.index,
+    //   };
 
     default:
       return state;

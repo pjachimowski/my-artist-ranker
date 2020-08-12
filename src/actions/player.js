@@ -1,6 +1,6 @@
 import * as PlayerActionTypes from '../actiontypes/players';
 
-export const addPlayer = (name, picture) => {
+export const addArtist = (name, picture) => {
   return {
     type: PlayerActionTypes.ADD_PLAYER,
     name, // add new player element
@@ -11,15 +11,15 @@ export const addPlayer = (name, picture) => {
 export const removePlayer = (index) => {
   return {
     type: PlayerActionTypes.REMOVE_PLAYER,
-    index,
+    index: index,
   };
 };
 
-export const updatePlayerScore = (index, score) => {
+export const updatePlayerScore = (index, rating) => {
   return {
     type: PlayerActionTypes.UPDATE_PLAYER_SCORE,
     index,
-    score, 
+    rating, 
   };
 };
 

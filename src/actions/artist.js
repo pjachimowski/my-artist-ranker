@@ -44,11 +44,13 @@ export function goArtistPage(id) {
   };
 }
 
-export function updateArtist(id, name, picture) {
+export function updateArtist(id, name, picture, updated) {
   return {
     type: ActionTypes.UPDATE_ARTIST,
     id,
     name,
     picture,
+    updated,
+    
   }
 }

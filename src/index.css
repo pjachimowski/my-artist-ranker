@@ -53,7 +53,6 @@ h4 {
 .header {
   padding: 5px 10px;
   text-align: center;
-  
 }
 
 h1 {
@@ -82,7 +81,7 @@ h2 {
   margin: 10px 0 15px 0;
   font-size: 20px;
   border-radius: 0 25px 0 25px;
-  border: solid 2px 
+  border: solid 2px;
 }
 
 .add-artist:hover {
@@ -109,7 +108,7 @@ h2 {
 .artist-section {
   flex-grow: 1;
   padding: 10px 10px 10px 25px;
-} 
+}
 
 .artist-name {
   color: #db96bb;
@@ -129,6 +128,20 @@ h2 {
   object-fit: cover;
   width: 80px;
   height: auto;
+}
+
+.artist-img-big {
+  border-radius: 0 25px 0 25px;
+  margin: 0 15px 0 0;
+  object-fit: cover;
+  width: 140px;
+  height: auto;
+}
+
+.artist-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
 
 .artist-score {
@@ -153,29 +166,29 @@ h2 {
 }
 
 .counter-action:focus {
-  outline:0;
+  outline: 0;
 }
 
 .counter-action.increment {
   border-radius: 25px 0 25px 0;
-  border: solid 2px  #66bb6a;
+  border: solid 2px #66bb6a;
   background: none;
 }
 
 .counter-action.increment:hover {
-  border: solid 2px  #38773c;
+  border: solid 2px #38773c;
   background: none;
   cursor: pointer;
 }
 
 .counter-action.decrement {
   border-radius: 25px 0 25px 0;
-  border: solid 2px  #ef5350;
+  border: solid 2px #ef5350;
   background: none;
 }
 
 .counter-action.decrement:hover {
-  border: solid 2px  #882322;
+  border: solid 2px #882322;
   background: none;
   cursor: pointer;
 }
@@ -188,6 +201,12 @@ h2 {
   font-size: 2em;
 }
 
+.btn-user-edit {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
 .add-artist-form {
   padding: 15px;
   display: grid;
@@ -195,7 +214,7 @@ h2 {
   align-content: center;
 }
 
-.center-btn{
+.center-btn {
   margin: 15px;
   text-align: center;
 }
@@ -218,35 +237,28 @@ h2 {
 .input {
   padding: 10px;
   border-radius: 5px;
-  background-color: #fafafa;;
+  background-color: #fafafa;
   border-style: none;
   color: #999;
   outline: none;
 }
 
-.artist-detail {
-  font-size: 1.1em;
-  padding: 1.65em 0 1.4em 1.65em;
-}
-.artist-detail p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.artist-detail ul {
-  padding: 0;
-  text-transform: initial;
-}
-
-.artist-detail ul span {
-  color: rgba(255, 255, 255, 0.43);
-  display: inline-block;
-  padding-right: 0.6em;
-  width: 3.8em;
+.footer-component {
+  padding: 25px 30px 10px 0px;
 }
 
 .footer {
-  margin-right: 25px;
   text-align: right;
   font-size: 12px;
+}
+
+.btn-center {
+  align-content: center;
+}
+
+.btn-disable {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: #c0c0c0;
+  background-color: #ffffff;
 }

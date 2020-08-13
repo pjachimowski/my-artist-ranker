@@ -15,9 +15,13 @@ export const EditArtist = (props) => {
   const editArtist = (e) => {
     e.preventDefault();
     const nameValue = document.getElementById('updateNameInput').value;
+    console.log('nameValue', nameValue);
     const picValue = document.getElementById('updatePicInput').value;
+    console.log('picValue', picValue);
     const updatedName = nameValue || currentArtist.name;
-    const updatedPic = picValue || currentArtist.pic;
+    console.log('updatedName', updatedName);
+    const updatedPic = picValue || currentArtist.picture;
+    console.log('updatedPic', updatedPic);
     dispatch(updateArtist(artistId, updatedName, updatedPic));
     document.getElementById('updateNameInput').value = '';
     document.getElementById('updatePicInput').value = '';
@@ -26,36 +30,52 @@ export const EditArtist = (props) => {
 
   return (
     <div className="add-artist-form">
-      <h2>Edit Artist</h2>
+      <h2>Edit {currentArtist.name}</h2>
+      <div className="artist-profile">
+        <aside>
+          <img
+            className="artist-img-big"
+            src={currentArtist.picture}
+            alt="Artist Album"
+          ></img>
+        </aside>
+        <aside>
+          <p>your rating: {currentArtist.rating}</p>
+          <p>last updated: {currentArtist.updated}</p>
+          <p>created: {currentArtist.created}</p>
+        </aside>
+      </div>
       <Form onSubmit={editArtist}>
         <Form.Group>
-          <label htmlFor="updateNameInput" className="label">
+          <Form.Label htmlFor="updateNameInput" className="label">
             Name
-            <input
+          </Form.Label>
+          <Form.Control
+            className="input"
+            type="text"
+            id="updateNameInput"
+            placeholder={currentArtist.name}
+          />
+
+          <div>
+            <Form.Label htmlFor="updatePicInput" className="label">
+              Pic URL
+            </Form.Label>
+            <Form.Control
               className="input"
               type="text"
-              id="updateNameInput"
-              placeholder={currentArtist.name}
+              id="updatePicInput"
+              placeholder={currentArtist.picture}
             />
-          </label>
-          <div>
-            <label htmlFor="updatePicInput" className="label">
-              Pic URL
-              <input
-                className="input"
-                type="text"
-                id="updatePicInput"
-                placeholder={currentArtist.pic}
-              />
-            </label>
           </div>
-          <div>
+          <div className="btn-user-edit">
             <button className="add-artist" type="submit">
               <i className="fas fa-user-edit"></i>
             </button>
           </div>
         </Form.Group>
       </Form>
+
       <Link to="/" className="btn-back">
         BACK
       </Link>

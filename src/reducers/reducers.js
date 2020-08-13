@@ -104,31 +104,28 @@ function Reducers(state = initialState, action) {
     }
 
     case ActionTypes.UPDATE_ARTIST: {
-      return state.artists.map((artist) =>
-        artist.id === action.id
-          ? { ...artist, name: action.name, picture: action.picture }
-          : artist
-      );
+      const updateArtistListtt = state.artists.map((artist) => {
+        if (artist.id === action.id) {
+          return {
+            ...artist,
+            name: action.name,
+            picture: action.picture,
+            updated: `${month}/${day}/${year}`,
+          };
+        }
+        return artist;
+      });
+      return {
+        ...state,
+        artists: updateArtistListtt,
+      };
     }
+
     case ActionTypes.GO_TO_ARTIST:
       return action.id;
     default:
       return state;
   }
 }
-
-// function idReducer(state = initialState, action) {
-//   switch (action.type) {
-//     case ActionTypes.GO_TO_ARTIST:
-//       return action.id;
-//     default:
-//       return state;
-//   }
-// }
-
-// const rootReducer = combineReducers({
-//   artists: Reducers,
-//   artistPageId: idReducer,
-// });
 
 export default Reducers;

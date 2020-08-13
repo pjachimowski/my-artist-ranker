@@ -1,6 +1,6 @@
 import React from 'react';
 import Artist from './Artist';
-import ArtistDetail from './ArtistDetails';
+import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -36,8 +36,8 @@ const Home = () => {
           </h4>
         </div>
       )}
-      <div className="artist-detail">
-        <ArtistDetail />
+      <div className="footer-component">
+        <Footer />
       </div>
     </div>
   );

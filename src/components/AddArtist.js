@@ -26,6 +26,7 @@ const AddArtist = () => {
 
   return (
     <div className="add-artist-form">
+    <h2>Add Artist</h2>
       <Form onSubmit={submitArtist}>
         <Form.Group>
           <Form.Label className="label">Name</Form.Label>

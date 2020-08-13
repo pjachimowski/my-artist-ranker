@@ -11,10 +11,9 @@ const Rating = (props) => {
   );
 };
 
-// Counter.propTypes = {
-//   updatePlayerScore: PropTypes.func.isRequired,
-//   index: PropTypes.number.isRequired,
-//   score: PropTypes.number.isRequired,
+// Rating.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   rating: PropTypes.number.isRequired,
 // };
 
 export default Rating;

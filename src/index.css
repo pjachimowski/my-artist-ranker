@@ -31,6 +31,15 @@ h3 {
   margin-top: 0;
 }
 
+.list-empty {
+  text-align: center;
+  border-bottom: solid 5px #bb779b;
+}
+
+h4 {
+  margin: 15px;
+}
+
 .app {
   background: linear-gradient(110deg, #1d1d1d 60%, #252525 60%);
   max-width: 60rem;
@@ -115,7 +124,7 @@ h2 {
 }
 
 .artist-img {
-  border-radius: 5px;
+  border-radius: 0 25px 0 25px;
   margin: 10px;
   object-fit: cover;
   width: 80px;
@@ -171,7 +180,7 @@ h2 {
   cursor: pointer;
 }
 
-.counter-score {
+.counter-rating {
   flex-grow: 1;
   color: lightgray;
   text-align: center;

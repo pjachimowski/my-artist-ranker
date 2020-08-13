@@ -2,9 +2,8 @@ import React from 'react';
 import Counter from './Counter';
 import Rating from './Rating';
 import { useDispatch } from 'react-redux';
-import { removePlayer, selectPlayer } from '../actions/player';
+import { removeArtist } from '../actions/artist';
 import { Link } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
 
 const Artist = (props) => {
   const dispatch = useDispatch();
@@ -18,12 +17,7 @@ const Artist = (props) => {
       <div className="artist-section">
         <Link className="artist-name" to={`/edit/${props.artist.id}`}>
           {' '}
-        <div
-          
-          onClick={() => dispatch(selectPlayer(props.index))}
-        >
-          {props.artist.name}
-        </div>
+          <div>{props.artist.name}</div>
         </Link>
         <section>
           your rating: <Rating rating={props.artist.rating} />{' '}
@@ -34,7 +28,7 @@ const Artist = (props) => {
       </div>
       <div
         className="remove-artist"
-        onClick={() => dispatch(removePlayer(props.index))}
+        onClick={() => dispatch(removeArtist(props.index))}
       >
         <i className="fas fa-user-minus"></i>
       </div>
@@ -42,12 +36,12 @@ const Artist = (props) => {
   );
 };
 
-// Player.propTypes = {
+// Artist.propTypes = {
 //   name: PropTypes.string.isRequired,
 //   index: PropTypes.number.isRequired,
-//   score: PropTypes.number.isRequired,
-//   removePlayer: PropTypes.func.isRequired,
-//   updatePlayerScore: PropTypes.func.isRequired,
+//   rating: PropTypes.number.isRequired,
+//   removeArtist: PropTypes.func.isRequired,
+//   updateArtistScore: PropTypes.func.isRequired,
 // };
 
 export default Artist;

@@ -1,10 +1,10 @@
 import React from 'react';
-import  ReactDOM  from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Reducers from './reducers/reducers';
 import App from './containers/App';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
 const store = createStore(
@@ -14,9 +14,9 @@ const store = createStore(
 
 ReactDOM.render(
   <React.StrictMode>
-  <Provider store={store}>
-    <App />
-  </Provider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

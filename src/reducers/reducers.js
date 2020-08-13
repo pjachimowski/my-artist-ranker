@@ -1,10 +1,10 @@
-import * as PlayerActionTypes from '../actiontypes/players';
+import * as ActionTypes from '../actiontypes/artist';
 import { v4 as uuid } from 'uuid';
 
 const initialState = {
   artists: [
     {
-      id: uuid(),
+      id: 1,
       name: 'Giolì & Assia',
       rating: 5,
       created: '11/8/2016',
@@ -25,10 +25,10 @@ const initialState = {
       rating: 3,
       created: '11/8/2016',
       updated: '11/9/2016',
-      picture: 'https://i.ibb.co/GM6cRT2/7f0f3e0101b6f051fbbc005fd68acd48389e9d9a.jpg',
+      picture:
+        'https://i.ibb.co/GM6cRT2/7f0f3e0101b6f051fbbc005fd68acd48389e9d9a.jpg',
     },
   ],
-  selectedPlayerIndex: -1,
 };
 
 export default function Reducers(state = initialState, action) {
@@ -38,10 +38,10 @@ export default function Reducers(state = initialState, action) {
   let year = date.getFullYear();
 
   switch (action.type) {
-    case PlayerActionTypes.ADD_PLAYER: {
+    case ActionTypes.ADD_ARTIST: {
       //{...} take existing items and incl. them in new object without mutating it
       // create object with name taken from the action and score 0
-      const addPlayerList = [
+      const addArtistList = [
         ...state.artists,
         {
           id: uuid(),
@@ -54,30 +54,39 @@ export default function Reducers(state = initialState, action) {
       ];
       return {
         ...state,
-        artists: addPlayerList,
+        artists: addArtistList,
       };
     }
 
-    case PlayerActionTypes.REMOVE_PLAYER: {
+    case ActionTypes.EDIT_ARTIST:
+      const updateArtist = action.payload;
+      const updateArtists = state.artists.map((artist) => {
+        if (artist.id === updateArtist.id) {
+          return updateArtist;
+        }
+        return artist;
+      });
+
+    case ActionTypes.REMOVE_ARTIST: {
       //{...} to cancatinate existing arrays
       // index is taken from the action
       //extract objects from arr, take all the object exept of the one we want to remove,
       // combain the results to a new arr
-      const removePlayerList = [
+      const removeArtistList = [
         ...state.artists.slice(0, action.index),
         ...state.artists.slice(action.index + 1),
       ];
       return {
         ...state,
-        artists: removePlayerList,
+        artists: removeArtistList,
       };
     }
 
-    case PlayerActionTypes.UPDATE_PLAYER_SCORE: {
+    case ActionTypes.UPDATE_ARTIST_RATING: {
       // use index to map/produce new array where,
-      // the only thing we change is the score of the player
+      // the only thing we change is the score of the Artist
       // whos index we have
-      const updatePlayerList = state.artists.map((artist, index) => {
+      const updateArtistList = state.artists.map((artist, index) => {
         if (index === action.index) {
           return {
             ...artist,
@@ -89,15 +98,9 @@ export default function Reducers(state = initialState, action) {
       });
       return {
         ...state,
-        artists: updatePlayerList,
+        artists: updateArtistList,
       };
     }
-
-    // case PlayerActionTypes.SELECT_PLAYER:
-    //   return {
-    //     ...state,
-    //     selectedPlayerIndex: action.index,
-    //   };
 
     default:
       return state;

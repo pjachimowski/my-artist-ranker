@@ -1,22 +1,22 @@
 import React from 'react';
 
-const PlayerDetail = ({ selectedPlayer }) => {
-  if (selectedPlayer) {
+const ArtistDetail = ({ selectedArtist }) => {
+  if (selectedArtist) {
     return (
       <div>
-        <h3>{selectedPlayer.name}</h3>
+        <h3>{selectedArtist.name}</h3>
         <ul>
           <li>
             <span>Score: </span>
-            {selectedPlayer.score}
+            {selectedArtist.score}
           </li>
           <li>
             <span>Created: </span>
-            {selectedPlayer.created}
+            {selectedArtist.created}
           </li>
           <li>
             <span>Updated: </span>
-            {selectedPlayer.updated}
+            {selectedArtist.updated}
           </li>
         </ul>
       </div>
@@ -33,8 +33,8 @@ const PlayerDetail = ({ selectedPlayer }) => {
   }
 };
 
-// PlayerDetail.propTypes = {
-//   selectedPlayer: PropTypes.object
+// ArtistDetail.propTypes = {
+//   selectedArtist: PropTypes.object
 // };
 
-export default PlayerDetail;
+export default ArtistDetail;

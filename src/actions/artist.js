@@ -1,19 +1,15 @@
 import * as ActionTypes from '../actiontypes/artist';
 
-export const addArtist = (name, picture) => {
-  return {
-    type: ActionTypes.ADD_ARTIST,
-    name,
-    picture,
-  };
-};
+export const addArtist = (name, picture) => ({
+  type: ActionTypes.ADD_ARTIST,
+  name,
+  picture,
+});
 
-export const removeArtist = (index) => {
-  return {
-    type: ActionTypes.REMOVE_ARTIST,
-    index: index,
-  };
-};
+export const removeArtist = index => ({
+  type: ActionTypes.REMOVE_ARTIST,
+  index,
+});
 
 // export const editArtist = (artist) => {
 //   return {
@@ -22,20 +18,16 @@ export const removeArtist = (index) => {
 //   };
 // };
 
-export const updateArtistRating = (index, rating) => {
-  return {
-    type: ActionTypes.UPDATE_ARTIST_RATING,
-    index,
-    rating,
-  };
-};
+export const updateArtistRating = (index, rating) => ({
+  type: ActionTypes.UPDATE_ARTIST_RATING,
+  index,
+  rating,
+});
 
-export const selectArtist = (index) => {
-  return {
-    type: ActionTypes.SELECT_ARTIST,
-    index,
-  };
-};
+export const selectArtist = index => ({
+  type: ActionTypes.SELECT_ARTIST,
+  index,
+});
 
 export function goArtistPage(id) {
   return {
@@ -51,6 +43,6 @@ export function updateArtist(id, name, picture, updated) {
     name,
     picture,
     updated,
-    
-  }
+
+  };
 }

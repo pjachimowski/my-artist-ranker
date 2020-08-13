@@ -1,6 +1,6 @@
+import { v4 as uuid } from 'uuid';
 import * as ActionTypes from '../actiontypes/artist';
 // import { combineReducers } from 'redux';
-import { v4 as uuid } from 'uuid';
 
 const initialState = {
   artists: [
@@ -8,24 +8,24 @@ const initialState = {
       id: uuid(),
       name: 'Giolì & Assia',
       rating: 5,
-      created: '11/8/2016',
-      updated: '11/9/2016',
+      created: '14/8/2020',
+      updated: '14/8/2020',
       picture: 'https://i.ibb.co/xLvHHCZ/TEy-FOecd-400x400.jpg',
     },
     {
       id: uuid(),
       name: 'Mumford & Sons',
       rating: 4,
-      created: '11/8/2016',
-      updated: '11/9/2016',
+      created: '13/8/2020',
+      updated: '14/8/2020',
       picture: 'https://i.ibb.co/sJyfzd8/Mumford-Sons-Delta.png',
     },
     {
       id: uuid(),
       name: 'Shallou',
       rating: 3,
-      created: '11/8/2016',
-      updated: '11/9/2016',
+      created: '12/8/2020',
+      updated: '14/8/2020',
       picture:
         'https://i.ibb.co/GM6cRT2/7f0f3e0101b6f051fbbc005fd68acd48389e9d9a.jpg',
     },
@@ -33,14 +33,14 @@ const initialState = {
 };
 
 function Reducers(state = initialState, action) {
-  let date = new Date();
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
 
   switch (action.type) {
     case ActionTypes.ADD_ARTIST: {
-      //{...} take existing items and incl. them in new object without mutating it
+      // {...} take existing items and incl. them in new object without mutating it
       // create object with name taken from the action and score 0
       const addArtistList = [
         ...state.artists,
@@ -69,9 +69,9 @@ function Reducers(state = initialState, action) {
     //   });
 
     case ActionTypes.REMOVE_ARTIST: {
-      //{...} to cancatinate existing arrays
+      // {...} to cancatinate existing arrays
       // index is taken from the action
-      //extract objects from arr, take all the object exept of the one we want to remove,
+      // extract objects from arr, take all the object exept of the one we want to remove,
       // combain the results to a new arr
       const removeArtistList = [
         ...state.artists.slice(0, action.index),
@@ -104,7 +104,7 @@ function Reducers(state = initialState, action) {
     }
 
     case ActionTypes.UPDATE_ARTIST: {
-      const updateArtistListtt = state.artists.map((artist) => {
+      const updateArtistListtt = state.artists.map(artist => {
         if (artist.id === action.id) {
           return {
             ...artist,

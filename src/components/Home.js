@@ -1,18 +1,18 @@
 import React from 'react';
-import Artist from './Artist';
-import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Artist from './Artist';
+import Footer from './Footer';
 
 const Home = () => {
-  const artists = useSelector((state) => state.artists);
+  const artists = useSelector(state => state.artists);
 
   return (
     <div>
       <div className="add-nav">
         <Link className="add-artist" to="/add">
           {' '}
-          <i className="fas fa-user-plus"></i>
+          <i className="fas fa-user-plus" />
         </Link>
       </div>
       {artists.length > 0 ? (
@@ -24,15 +24,14 @@ const Home = () => {
                 rating={artist.rating}
                 key={artist.id}
                 index={index}
-                artist={artist}
-              />
+                artist={artist} />
             ))}
         </div>
       ) : (
         <div className="list-empty">
           <h4>Artist list is empty</h4>
           <h4>
-            <i className="far fa-frown"></i>
+            <i className="far fa-frown" />
           </h4>
         </div>
       )}

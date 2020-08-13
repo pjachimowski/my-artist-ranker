@@ -1,18 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateArtist } from '../actions/artist';
 import Form from 'react-bootstrap/Form';
 import { Link, useHistory } from 'react-router-dom';
+import { updateArtist } from '../actions/artist';
 
-export const EditArtist = (props) => {
+export const EditArtist = props => {
   const dispatch = useDispatch();
-  const artists = useSelector((state) => state.artists);
+  const artists = useSelector(state => state.artists);
   // const artistId = useSelector((state) => state.artistPageId);
   const artistId = props.match.params.id;
-  const currentArtist = artists.find((artist) => artist.id === artistId);
+  const currentArtist = artists.find(artist => artist.id === artistId);
 
   const history = useHistory();
-  const editArtist = (e) => {
+  const editArtist = e => {
     e.preventDefault();
     const nameValue = document.getElementById('updateNameInput').value;
     console.log('nameValue', nameValue);
@@ -30,19 +30,30 @@ export const EditArtist = (props) => {
 
   return (
     <div className="add-artist-form">
-      <h2>Edit {currentArtist.name}</h2>
+      <h2>
+        Edit
+        {currentArtist.name}
+      </h2>
       <div className="artist-profile">
         <aside>
           <img
             className="artist-img-big"
             src={currentArtist.picture}
-            alt="Artist Album"
-          ></img>
+            alt="Artist Album" />
         </aside>
         <aside>
-          <p>your rating: {currentArtist.rating}</p>
-          <p>last updated: {currentArtist.updated}</p>
-          <p>created: {currentArtist.created}</p>
+          <p>
+            your rating:
+            {currentArtist.rating}
+          </p>
+          <p>
+            last updated:
+            {currentArtist.updated}
+          </p>
+          <p>
+            created:
+            {currentArtist.created}
+          </p>
         </aside>
       </div>
       <Form onSubmit={editArtist}>
@@ -54,8 +65,7 @@ export const EditArtist = (props) => {
             className="input"
             type="text"
             id="updateNameInput"
-            placeholder={currentArtist.name}
-          />
+            placeholder={currentArtist.name} />
 
           <div>
             <Form.Label htmlFor="updatePicInput" className="label">
@@ -65,12 +75,11 @@ export const EditArtist = (props) => {
               className="input"
               type="text"
               id="updatePicInput"
-              placeholder={currentArtist.picture}
-            />
+              placeholder={currentArtist.picture} />
           </div>
           <div className="btn-user-edit">
             <button className="add-artist" type="submit">
-              <i className="fas fa-user-edit"></i>
+              <i className="fas fa-user-edit" />
             </button>
           </div>
         </Form.Group>

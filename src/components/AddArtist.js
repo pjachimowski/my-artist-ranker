@@ -16,17 +16,17 @@ const AddArtist = () => {
     history.push('/');
   };
 
-  const onNameChange = (e) => {
+  const onNameChange = e => {
     setName(e.target.value);
   };
 
-  const onPictureChange = (e) => {
+  const onPictureChange = e => {
     setImg(e.target.value);
   };
 
   return (
     <div className="add-artist-form">
-    <h2>Add Artist</h2>
+      <h2>Add Artist</h2>
       <Form onSubmit={submitArtist}>
         <Form.Group>
           <Form.Label className="label">Name</Form.Label>
@@ -35,19 +35,17 @@ const AddArtist = () => {
             type="text"
             // value={this.state.name}
             onChange={onNameChange}
-            placeholder="add new artist name"
-          />
+            placeholder="add new artist name" />
           <Form.Label className="label">Picture</Form.Label>
           <Form.Control
             className="input"
             type="text"
             // value={this.state.picture}
             onChange={onPictureChange}
-            placeholder="add url for the artist picture"
-          />
+            placeholder="add url for the artist picture" />
           <div className="center-btn">
             <button className="add-artist" type="submit">
-              <i className="fas fa-user-plus"></i>
+              <i className="fas fa-user-plus" />
             </button>
           </div>
         </Form.Group>

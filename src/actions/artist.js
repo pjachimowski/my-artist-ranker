@@ -15,12 +15,12 @@ export const removeArtist = (index) => {
   };
 };
 
-export const editArtist = (artist) => {
-  return {
-    type: ActionTypes.EDIT_ARTIST,
-    payload: artist,
-  };
-};
+// export const editArtist = (artist) => {
+//   return {
+//     type: ActionTypes.EDIT_ARTIST,
+//     payload: artist,
+//   };
+// };
 
 export const updateArtistRating = (index, rating) => {
   return {
@@ -36,3 +36,19 @@ export const selectArtist = (index) => {
     index,
   };
 };
+
+export function goArtistPage(id) {
+  return {
+    type: ActionTypes.GO_TO_ARTIST,
+    id,
+  };
+}
+
+export function updateArtist(id, name, picture) {
+  return {
+    type: ActionTypes.UPDATE_ARTIST,
+    id,
+    name,
+    picture,
+  }
+}

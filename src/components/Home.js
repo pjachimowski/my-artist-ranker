@@ -32,7 +32,7 @@ const Home = () => {
         <div className="list-empty">
           <h4>Artist list is empty</h4>
           <h4>
-            <i class="far fa-frown"></i>
+            <i className="far fa-frown"></i>
           </h4>
         </div>
       )}

@@ -45,7 +45,7 @@ const AddArtist = () => {
             placeholder="add url for the artist picture"
           />
           <div className="center-btn">
-            <button className="add-artist" type="submit" value="Add Artist">
+            <button className="add-artist" type="submit">
               <i className="fas fa-user-plus"></i>
             </button>
           </div>

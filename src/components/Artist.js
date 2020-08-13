@@ -15,7 +15,8 @@ const Artist = (props) => {
         alt="Artist Album"
       ></img>
       <div className="artist-section">
-        <Link className="artist-name" to={`/edit/${props.artist.id}`}>
+      {/* id={props.artist.id} */}
+        <Link className="artist-name" to={`/edit/${props.artist.id}`} > 
           {' '}
           <div>{props.artist.name}</div>
         </Link>

@@ -1,10 +1,11 @@
 import * as ActionTypes from '../actiontypes/artist';
+// import { combineReducers } from 'redux';
 import { v4 as uuid } from 'uuid';
 
 const initialState = {
   artists: [
     {
-      id: 1,
+      id: uuid(),
       name: 'Giolì & Assia',
       rating: 5,
       created: '11/8/2016',
@@ -31,7 +32,7 @@ const initialState = {
   ],
 };
 
-export default function Reducers(state = initialState, action) {
+function Reducers(state = initialState, action) {
   let date = new Date();
   let day = date.getDate();
   let month = date.getMonth() + 1;
@@ -58,14 +59,14 @@ export default function Reducers(state = initialState, action) {
       };
     }
 
-    case ActionTypes.EDIT_ARTIST:
-      const updateArtist = action.payload;
-      const updateArtists = state.artists.map((artist) => {
-        if (artist.id === updateArtist.id) {
-          return updateArtist;
-        }
-        return artist;
-      });
+    // case ActionTypes.EDIT_ARTIST:
+    //   const updateArtist = action.payload;
+    //   const updateArtists = state.artists.map((artist) => {
+    //     if (artist.id === updateArtist.id) {
+    //       return updateArtist;
+    //     }
+    //     return artist;
+    //   });
 
     case ActionTypes.REMOVE_ARTIST: {
       //{...} to cancatinate existing arrays
@@ -102,7 +103,32 @@ export default function Reducers(state = initialState, action) {
       };
     }
 
+    case ActionTypes.UPDATE_ARTIST: {
+      return state.artists.map((artist) =>
+        artist.id === action.id
+          ? { ...artist, name: action.name, picture: action.picture }
+          : artist
+      );
+    }
+    case ActionTypes.GO_TO_ARTIST:
+      return action.id;
     default:
       return state;
   }
 }
+
+// function idReducer(state = initialState, action) {
+//   switch (action.type) {
+//     case ActionTypes.GO_TO_ARTIST:
+//       return action.id;
+//     default:
+//       return state;
+//   }
+// }
+
+// const rootReducer = combineReducers({
+//   artists: Reducers,
+//   artistPageId: idReducer,
+// });
+
+export default Reducers;

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 body {
-  background: #581237;
+  background: #490e2d;
   font-family: 'Ubuntu', sans-serif;
   color: lightgray;
 }
@@ -35,7 +35,7 @@ h3 {
   background: linear-gradient(110deg, #1d1d1d 60%, #252525 60%);
   max-width: 60rem;
   margin: 4rem auto;
-  border-radius: 5px;
+  border-radius: 0 25px 0 25px;
   -webkit-box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.44);
   -moz-box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.44);
   box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.44);
@@ -72,7 +72,7 @@ h2 {
   padding: 20px;
   margin: 10px 0 15px 0;
   font-size: 20px;
-  border-radius: 50%;
+  border-radius: 0 25px 0 25px;
   border: solid 2px 
 }
 

@@ -7,11 +7,13 @@ const Counter = props => {
   const minBtn = document.getElementById('min');
   const plusBtn = document.getElementById('plus');
   const block = 'btn-disable';
-  if (props.rating <= 0) {
+  if (props.rating < 0) {
     minBtn.className += ` ${block}`;
   } else if (props.rating > 9) {
     plusBtn.className += ` ${block}`;
-  } else {
+  } else{
+    // plusBtn.className += "" + "counter-action";
+    // minBtn.className += "" + "counter-action";
   }
 
   return (

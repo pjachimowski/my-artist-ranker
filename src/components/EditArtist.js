@@ -43,15 +43,15 @@ export const EditArtist = props => {
         </aside>
         <aside>
           <p>
-            your rating:
-            {currentArtist.rating}
+            your rating: 
+             {currentArtist.rating}
           </p>
           <p>
-            last updated:
+            last updated: 
             {currentArtist.updated}
           </p>
           <p>
-            created:
+            created: 
             {currentArtist.created}
           </p>
         </aside>
